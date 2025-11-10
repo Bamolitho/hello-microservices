@@ -4,9 +4,14 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: user-service  # <--- applique à toutes les étapes
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -29,3 +34,4 @@ jobs:
       
       - name: Run black check
         run: black --check app tests
+
