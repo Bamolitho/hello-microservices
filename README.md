@@ -235,6 +235,10 @@ Chaque service a :
 
 **Status badge** : 
 
-[![CI-USER](https://github.com/Bamolitho/hello-microservices/actions/workflows/ci-user.yml/badge.svg)](https://github.com/Bamolitho/hello-microservices/actions/workflows/ci-user.yml)
+| [![CI-USER](https://github.com/Bamolitho/hello-microservices/actions/workflows/ci-user.yml/badge.svg)](https://github.com/Bamolitho/hello-microservices/actions/workflows/ci-user.yml) | [![CI-PRODUCT](https://github.com/Bamolitho/hello-microservices/actions/workflows/ci-product.yml/badge.svg)](https://github.com/Bamolitho/hello-microservices/actions/workflows/ci-product.yml) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+|                                                              |                                                              |
+
+
 
 # RÉFÉRENCES
