@@ -228,3 +228,17 @@ Chaque service a :
 - Un pipeline **CI** (`ci.yml`) pour les tests unitaires et le linting.
 - Un pipeline **CD** (`cd.yml`) pour le déploiement automatique sur Render ou autre plateforme.
 - Un fichier `deploy.yml` gère le déploiement global.
+
+
+
+
+
+**Status badge** : 
+
+[![CI](https://github.com/Bamolitho/hello-ci-cd/actions/workflows/ci.yml/badge.svg)](https://github.com/Bamolitho/hello-ci-cd/actions/workflows/ci.yml)
+
+[![CD](https://github.com/Bamolitho/hello-ci-cd/actions/workflows/cd.yml/badge.svg)](https://github.com/Bamolitho/hello-ci-cd/actions/workflows/cd.yml)
+
+[![deploy-render](https://github.com/Bamolitho/hello-ci-cd/actions/workflows/deploy-render.yml/badge.svg)](https://github.com/Bamolitho/hello-ci-cd/actions/workflows/deploy-render.yml)
+
+# RÉFÉRENCES
