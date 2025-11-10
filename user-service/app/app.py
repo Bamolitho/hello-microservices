@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+import os
 
 app = Flask(__name__)
 
@@ -22,4 +23,4 @@ def get_user(user_id):
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5201, debug=True)
+    app.run(host="0.0.0.0", port=int(os.getenv("PORT", 5201)), debug=True)

@@ -36,10 +36,13 @@ docker-build:
 	docker build -t $(IMAGE_NAME):latest .
 
 docker-run:
-	docker run -d -p 5000:5000 --name $(CONTAINER_NAME) $(IMAGE_NAME):latest
+	docker run -d -p 5201:5201 --name $(CONTAINER_NAME) $(IMAGE_NAME):latest
 
 docker-stop:
 	docker stop $(CONTAINER_NAME) || true && docker rm $(CONTAINER_NAME) || true
+
+docker-logs:
+	docker logs -f $(CONTAINER_NAME)
 
 docker-clean:
 	docker rmi $(IMAGE_NAME):latest || true

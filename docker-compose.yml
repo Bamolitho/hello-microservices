@@ -1,0 +1,30 @@
+services:
+  user-service:
+    build:
+      context: ./user-service
+      dockerfile: Dockerfile
+    container_name: user-service
+    ports:
+      - "5201:5201"
+    environment:
+      - FLASK_ENV=production
+    networks:
+      - micro_net
+
+  product-service:
+    build:
+      context: ./product-service
+      dockerfile: Dockerfile
+    container_name: product-service
+    ports:
+      - "5202:5202"
+    environment:
+      - FLASK_ENV=production
+      - USER_SERVICE_URL=http://user-service:5201   # Nom du service pour communication interne
+    networks:
+      - micro_net
+
+networks:
+  micro_net:
+    driver: bridge
+
