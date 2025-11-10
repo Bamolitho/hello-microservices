@@ -4,6 +4,7 @@ import pytest
 from app.app import app
 import requests
 
+
 @pytest.fixture
 def client():
     app.testing = True
@@ -35,12 +36,18 @@ def test_get_product_not_found(client):
 
 
 def test_get_product_with_user_success(monkeypatch, client):
-    """Teste la récupération d’un produit avec un utilisateur (mock du user-service)"""
+    """
+    Teste la récupération d’un produit avec un utilisateur
+    (mock du user-service)
+    """
+
     def mock_get(url, timeout):
         class MockResponse:
             status_code = 200
+
             def json(self):
                 return {"id": 1, "name": "John Doe"}
+
         return MockResponse()
 
     monkeypatch.setattr(requests, "get", mock_get)
@@ -55,6 +62,7 @@ def test_get_product_with_user_success(monkeypatch, client):
 
 def test_get_product_with_user_unreachable(monkeypatch, client):
     """Teste l’erreur quand le user-service ne répond pas"""
+
     def mock_get(url, timeout):
         raise requests.exceptions.ConnectionError("user-service unreachable")
 
@@ -64,4 +72,3 @@ def test_get_product_with_user_unreachable(monkeypatch, client):
     assert response.status_code == 500
     data = response.get_json()
     assert data["error"] == "Failed to contact user-service"
-

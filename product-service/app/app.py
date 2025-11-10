@@ -38,24 +38,45 @@ def get_product_with_user(product_id):
 
     try:
         user_id = product["owner_id"]
-        user_response = requests.get(f"{USER_SERVICE_URL}/user/{user_id}", timeout=3)
+        user_url = f"{USER_SERVICE_URL}/user/{user_id}"
+        user_response = requests.get(user_url, timeout=3)
+
         if user_response.status_code == 200:
-            return jsonify({
-                "product": product,
-                "owner": user_response.json()
-            }), 200
-        else:
-            return jsonify({
-                "product": product,
-                "owner_error": "User not found"
-            }), 404
+            return (
+                jsonify(
+                    {
+                        "product": product,
+                        "owner": user_response.json(),
+                    }
+                ),
+                200,
+            )
+
+        return (
+            jsonify(
+                {
+                    "product": product,
+                    "owner_error": "User not found",
+                }
+            ),
+            404,
+        )
+
     except requests.exceptions.RequestException as e:
-        return jsonify({
-            "error": "Failed to contact user-service",
-            "details": str(e)
-        }), 500
+        return (
+            jsonify(
+                {
+                    "error": "Failed to contact user-service",
+                    "details": str(e),
+                }
+            ),
+            500,
+        )
 
 
 if __name__ == "__main__":
-   app.run(host="0.0.0.0", port=int(os.getenv("PORT", 5202)), debug=True)
-
+    app.run(
+        host="0.0.0.0",
+        port=int(os.getenv("PORT", 5202)),
+        debug=True,
+    )

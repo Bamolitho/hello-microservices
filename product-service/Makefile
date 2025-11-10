@@ -80,6 +80,12 @@ tree:
 	@tree -I '__pycache__|*.pyc|venv|__init__.py' -L 5 2>/dev/null || \
 	(ls -R | grep ":$$" | sed -e 's/:$$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/')
 
+format:
+	black app/ tests/
+
+lint:
+	flake8 app/ tests/
+
 help:
 	@echo "Commandes disponibles pour $(SERVICE_NAME):"
 	@echo "  make venv-setup     - Créer venv et installer dépendances"
